@@ -38,11 +38,9 @@ if place_meeting(x + xSpeed, y, oWall) {
 			}
 		}
 		
-		
+		// Set xSpeed to zero to `collide`
+		xSpeed = 0
 	}
-	
-	// Set xSpeed to zero to `collide`
-	xSpeed = 0
 }
 // Go down slopes
 if ySpeed >= 0 && !place_meeting(x + xSpeed, y + 1, oWall) && place_meeting(x + xSpeed, y + abs(xSpeed) + 1, oWall) {
@@ -75,7 +73,7 @@ if onGround {
 	// if player is in the air, make sure they can't do an extra jump
 	coyoteJumpTimer--
 	if jumpCount == 0 && coyoteJumpTimer <= 0 {
-		jumpCount = 1
+		jumpCount = 0
 	}
 }
 
@@ -190,35 +188,65 @@ y += ySpeed
 /// Sprite Control
 // Walking
 if abs(xSpeed) > 0 {
-	if (sprite_index == walkRunSpr) {
-		sprite_index = turnSpr
-		if (image_index >= 6) {
-			sprite_index = walkRunSpr
-			image_index = 0
+	switch (face) {
+		case 1:
+			sprite_index = walkRunSprRight
 			sprite_set_speed(sprite_index, 10, spritespeed_framespersecond)
-		}
+			break
+		case -1:
+			sprite_index = walkRunSprLeft
+			sprite_set_speed(sprite_index, 10, spritespeed_framespersecond)
+			break
+		default:
+			break
+			
 	}
 }
 // Running
 if abs(xSpeed) >= moveSpeed[1] {
-	if (sprite_index == walkRunSpr) {
-		sprite_index = turnSpr
-		if (image_index >= 6) {
-			sprite_index = walkRunSpr
-			image_index = 0
+	switch (face) {
+		case 1:
+			sprite_index = walkRunSprRight
 			sprite_set_speed(sprite_index, 15, spritespeed_framespersecond)
-		}
-	}	
+			break
+		case -1:
+			sprite_index = walkRunSprLeft
+			sprite_set_speed(sprite_index, 15, spritespeed_framespersecond)
+			break
+		default:
+			break
+			
+	}
 }
 // Not moving
 if xSpeed == 0 {
-	sprite_index = idleSpr
-	sprite_set_speed(sprite_index, 5, spritespeed_framespersecond)
+	switch (face) {
+		case 1:
+			sprite_index = idleBobSprRight
+			sprite_set_speed(sprite_index, 5, spritespeed_framespersecond)
+			break
+		case -1:
+			sprite_index = idleBobSprLeft
+			sprite_set_speed(sprite_index, 5, spritespeed_framespersecond)
+			break
+		default:
+			break;
+	}
 }
 // Jumping/in the air
 if !onGround {
-	sprite_index = jumpSpr
-	sprite_set_speed(sprite_index, 10, spritespeed_framespersecond)
+	switch (face) {
+		case 1:
+			sprite_index = jumpSprRight
+			sprite_set_speed(sprite_index, 10, spritespeed_framespersecond)
+			break
+		case -1:
+			sprite_index = jumpSprLeft
+			sprite_set_speed(sprite_index, 10, spritespeed_framespersecond)
+			break
+		default:
+			break		
+	}
 }
 
 // set collision mask

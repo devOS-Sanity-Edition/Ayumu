@@ -26,30 +26,34 @@ termVel = 4
 jumpMax = 2
 jumpCount = 0
 jumpHoldTimer = 0
-jumpSpeed[0] = -4.5
-jumpSpeed[1] = -4.0
+jumpSpeed[0] = -3
+jumpSpeed[1] = -2.5
 jumpHoldFrames[0] = 16
 jumpHoldFrames[1] = 8
 onGround = true
 
 // Coyote time
 // Hang time
-coyoteHangFrames = 2
+coyoteHangFrames = 4
 coyoteHangTimer = 0
 
 // Jump buffer
-coyoteJumpTimer = 6
+coyoteJumpTimer = 8
 coyoteJumpFrames = 0
 
 // Sprites
 maskSpr = sPlayerIdleBlink
-idleSpr = choose(sPlayerIdleBlink, sPlayerIdleBob)
-walkRunSpr = sPlayerWalkRun
-jumpSpr = sPlayerJump
+idleBobSprRight = sPlayerIdleBobRight
+idleBobSprLeft = sPlayerIdleBobLeft
+walkRunSprRight = sPlayerWalkRunRight
+walkRunSprLeft = sPlayerWalkRunLeft
+jumpSprRight = sPlayerJumpRight
+jumpSprLeft = sPlayerJumpLeft
 turnSpr = sPlayerTurn
 
 // Other
 roofBonkingFix = true
+wallAreYouDoing = [oWall, oInvisWall]
 
 // Shader Color Swap
 color_old1 = shader_get_uniform(shdrSlimeColor, "color_old1")

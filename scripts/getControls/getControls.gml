@@ -14,14 +14,23 @@ function getControls() {
 	leftKey = clamp(leftKey, 0, 1)
 	
 	// Action inputs
-	jumpKeyPressed = keyboard_check_pressed(vk_space) + keyboard_check_pressed(vk_up)
+	jumpKeyPressed = keyboard_check_pressed(vk_space)
 	jumpKeyPressed = clamp(jumpKeyPressed, 0, 1)
 	
-	jumpKey = keyboard_check(vk_space) + keyboard_check(vk_up)
+	jumpKey = keyboard_check(vk_space)
 	jumpKey = clamp(jumpKey, 0, 1)
 	
-	runKey = keyboard_check(vk_control)
+	downKey = keyboard_check(vk_down)
+	downKey = clamp(downKey, 0, 1)
+	
+	upKey = keyboard_check(vk_up)
+	upKey = clamp(upKey, 0, 1)
+	
+	runKey = keyboard_check(vk_shift)
 	runKey = clamp(runKey, 0, 1)
+	
+	dashKey = keyboard_check(vk_control)
+	dashKey = clamp(dashKey, 0, 1)
 	
 	// Jump key buffering
 	if jumpKeyPressed {

@@ -1,1 +1,1 @@
-ImGui.__Update();
+ImGui.__Update()

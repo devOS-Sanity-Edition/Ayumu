@@ -17,6 +17,10 @@ if (ImGui.BeginMenu("File")) {
 		enable_docking = !enable_docking;
 	}
 	
+	if (ImGui.MenuItem("Player Statistics", undefined, enablePlayerStats)) {
+		enablePlayerStats = !enablePlayerStats
+	}
+	
 	ImGui.Separator();
 	
 	if (ImGui.MenuItem("Exit")) {
@@ -37,9 +41,37 @@ if (ImGui.BeginPopupModal("Exit?", undefined, ImGuiWindowFlags.NoResize)) {
 	ImGui.EndPopup();	
 }
 
-if (ImGui.BeginMenu("Windows")) {
-	if (ImGui.MenuItem("Show Example Window", undefined, undefined, !main_open)) main_open = true;	
-	if (ImGui.MenuItem("Show Demo Window", undefined, undefined, !demo_open)) demo_open = true;	
-	ImGui.EndMenu();
-}
 ImGui.EndMainMenuBar();
+
+if (enablePlayerStats) {
+	ImGui.SetNextWindowSize(500, 530, ImGuiCond.None)
+	ImGui.Begin("Debug panel")
+
+	ImGui.Text("Movement")
+	ImGui.InputInt("Facing", oPlayer.face)
+	ImGui.InputInt("Movement Direction", oPlayer.moveDir)
+	ImGui.InputFloat2("Set Walk/Sprint Speed", [oPlayer.moveSpeed[0], oPlayer.moveSpeed[1]])
+	ImGui.InputFloat("X Speed", oPlayer.xSpeed)
+	ImGui.InputFloat("Y Speed", oPlayer.ySpeed)
+	ImGui.InputFloat("Gravity", oPlayer.grav)
+	ImGui.InputInt("Terminal Velocity", oPlayer.termVel)
+	ImGui.Separator()
+	ImGui.Text("Jumping")
+	ImGui.InputInt("Max", oPlayer.jumpMax)
+	ImGui.InputInt("Count", oPlayer.jumpCount)
+	ImGui.InputInt("Hold Timer", oPlayer.jumpHoldTimer)
+	ImGui.InputFloat2("Set Speed", [oPlayer.jumpSpeed[0], oPlayer.jumpSpeed[1]])
+	ImGui.InputInt2("Set Hold Frames", [oPlayer.jumpHoldFrames[0], oPlayer.jumpHoldFrames[1]])
+	ImGui.InputInt("On Ground", oPlayer.onGround)
+	ImGui.Separator()
+	ImGui.Text("Coyote Time")
+	ImGui.InputInt("Set Hang Frames", oPlayer.coyoteHangFrames)
+	ImGui.InputInt("Hang Timer", oPlayer.coyoteHangTimer)
+	ImGui.InputInt("Jump Timer", oPlayer.coyoteJumpTimer)
+	ImGui.InputInt("Hang Jump Frames", oPlayer.coyoteJumpFrames)
+	ImGui.Separator()
+	ImGui.Text("Sprite")
+	ImGui.InputText("Current Spr", sprite_get_name(oPlayer.sprite_index[0]))
+
+	ImGui.End()
+}

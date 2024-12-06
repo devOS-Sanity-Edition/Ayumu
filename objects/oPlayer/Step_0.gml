@@ -89,7 +89,7 @@ var _floorIsSolid = false
 if instance_exists(floorPlatform) && (floorPlatform.object_index == oWall || object_is_ancestor(floorPlatform.object_index, oWall)) {
 	_floorIsSolid = true
 }
-if jumpKeyBuffered && jumpCount < jumpMax {
+if jumpKeyBuffered && jumpCount < jumpMax && (!downKey || _floorIsSolid) {
 	// Reset the buffer
 	jumpKeyBuffered = false
 	jumpKeyBufferTimer = 0
@@ -270,7 +270,7 @@ if instance_exists(floorPlatform) {
 }
 
 // Manually fall through a semi-solid platform
-if downKey {
+if downKey && jumpKey {
 	// Make sure we have a floor platform that's a semi-solid
 	if instance_exists(floorPlatform) && (floorPlatform.object_index == oSemiSolidWall || object_is_ancestor(floorPlatform.object_index, oSemiSolidWall)) {
 		// Check if we can go below the semi-solid
@@ -383,11 +383,11 @@ if abs(xSpeed) >= moveSpeed[1] {
 	switch (face) {
 		case 1:
 			sprite_index = walkRunSprRight
-			sprite_set_speed(sprite_index, 15, spritespeed_framespersecond)
+			sprite_set_speed(sprite_index, 45, spritespeed_framespersecond)
 			break
 		case -1:
 			sprite_index = walkRunSprLeft
-			sprite_set_speed(sprite_index, 15, spritespeed_framespersecond)
+			sprite_set_speed(sprite_index, 45, spritespeed_framespersecond)
 			break
 		default:
 			break
@@ -399,11 +399,11 @@ if xSpeed == 0 {
 	switch (face) {
 		case 1:
 			sprite_index = idleBobSprRight
-			sprite_set_speed(sprite_index, 5, spritespeed_framespersecond)
+			sprite_set_speed(sprite_index, 15, spritespeed_framespersecond)
 			break
 		case -1:
 			sprite_index = idleBobSprLeft
-			sprite_set_speed(sprite_index, 5, spritespeed_framespersecond)
+			sprite_set_speed(sprite_index, 15, spritespeed_framespersecond)
 			break
 		default:
 			break;
@@ -414,11 +414,11 @@ if !onGround {
 	switch (face) {
 		case 1:
 			sprite_index = jumpSprRight
-			sprite_set_speed(sprite_index, 10, spritespeed_framespersecond)
+			sprite_set_speed(sprite_index, 15, spritespeed_framespersecond)
 			break
 		case -1:
 			sprite_index = jumpSprLeft
-			sprite_set_speed(sprite_index, 10, spritespeed_framespersecond)
+			sprite_set_speed(sprite_index, 15, spritespeed_framespersecond)
 			break
 		default:
 			break		

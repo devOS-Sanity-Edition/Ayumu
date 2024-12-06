@@ -81,6 +81,7 @@ if (enablePlayerStats) {
 	ImGui.Separator()
 	ImGui.Text("Sprite")
 	ImGui.InputText("Current Spr", sprite_get_name(oPlayer.sprite_index[0]))
+	ImGui.InputText("Spr Speed", sprite_get_speed(oPlayer.sprite_index[0]))
 
 	ImGui.End()
 }

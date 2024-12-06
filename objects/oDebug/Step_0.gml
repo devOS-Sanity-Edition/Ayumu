@@ -46,10 +46,15 @@ ImGui.EndMainMenuBar();
 if (enablePlayerStats) {
 	ImGui.SetNextWindowSize(550, 620, ImGuiCond.None)
 	ImGui.Begin("Debug panel")
-
+	ImGui.Text($"Build Date: {getBuildDate()}")
+	ImGui.Text($"Build Type: {GM_build_type}")
+	ImGui.Text($"GM Runtime Version: {GM_runtime_version}")
+	ImGui.Text($"Game Version: {GM_version}")
+	ImGui.Separator()
 	ImGui.Text("Camera")
 	ImGui.InputFloat2("X/Y Position", [oCamera.finalCamX, oCamera.finalCamY])
 	ImGui.InputFloat("Set Camera Trail Speed", oCamera.camTrailSpeed)
+	ImGui.Separator()
 	ImGui.Text("Movement")
 	ImGui.InputFloat2("X/Y Position", [oPlayer.x, oPlayer.y])
 	ImGui.InputInt("Facing", oPlayer.face)

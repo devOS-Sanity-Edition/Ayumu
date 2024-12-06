@@ -4,9 +4,42 @@ function setOnGround(_val = true) {
 		coyoteHangTimer = coyoteHangFrames
 	} else {
 		onGround = false
+		floorPlatform = noone
 		coyoteHangTimer = 0
 	}
 }
+
+function checkForSemiSolidPlatform(_x, _y) {
+	// Create a return variable
+	var _rtrn = noone
+	
+	// Must not be moving upwards, and then check for normal collision
+	if ySpeed >= 0 && place_meeting(_x, _y, oSemiSolidWall) {
+		// Create a DS List [Data Structure List] to store all colliding instances of oSemiSolidWall
+		var _list = ds_list_create()
+		var _listSize = instance_place_list(_x, _y, oSemiSolidWall, _list, false)
+		
+		// Loop through the colliding instances and only return one of its top is below the player
+		for (var i = 0; i < _listSize; i++) {
+			var _listInst = _list[| i]
+			if _listInst != forgetSemiSolid && floor(bbox_bottom) <= ceil(_listInst.bbox_top - _listInst.ySpeed) {
+				// Return the ID of a semi-solid platform
+				_rtrn = _listInst
+				
+				// Exit the loop early
+				i = _listSize
+			}
+		}
+		
+		// Destroy DS List so you don't end up with a fucking memory leak
+		ds_list_destroy(_list)
+	}
+	
+	// Return out var
+	return _rtrn
+}
+
+depth = -30
 
 // Controls setup
 controlsSetup()
@@ -40,6 +73,13 @@ coyoteHangTimer = 0
 // Jump buffer
 coyoteJumpTimer = 8
 coyoteJumpFrames = 0
+
+// Moving platforms
+floorPlatform = noone
+downSlopeSemiSolid = noone
+forgetSemiSolid = noone
+movePlatformXSpeed = 0
+movePlatformYSpeed = termVel // this can be a different value for a player falling w/ a downwards moving platform, but lets keep it to terminal velocity
 
 // Sprites
 maskSpr = sPlayerIdleBlink

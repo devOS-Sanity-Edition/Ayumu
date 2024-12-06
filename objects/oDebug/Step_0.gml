@@ -44,10 +44,14 @@ if (ImGui.BeginPopupModal("Exit?", undefined, ImGuiWindowFlags.NoResize)) {
 ImGui.EndMainMenuBar();
 
 if (enablePlayerStats) {
-	ImGui.SetNextWindowSize(500, 530, ImGuiCond.None)
+	ImGui.SetNextWindowSize(550, 620, ImGuiCond.None)
 	ImGui.Begin("Debug panel")
 
+	ImGui.Text("Camera")
+	ImGui.InputFloat2("X/Y Position", [oCamera.finalCamX, oCamera.finalCamY])
+	ImGui.InputFloat("Set Camera Trail Speed", oCamera.camTrailSpeed)
 	ImGui.Text("Movement")
+	ImGui.InputFloat2("X/Y Position", [oPlayer.x, oPlayer.y])
 	ImGui.InputInt("Facing", oPlayer.face)
 	ImGui.InputInt("Movement Direction", oPlayer.moveDir)
 	ImGui.InputFloat2("Set Walk/Sprint Speed", [oPlayer.moveSpeed[0], oPlayer.moveSpeed[1]])

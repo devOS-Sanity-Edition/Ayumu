@@ -1,17 +1,18 @@
 {
   "$GMObject":"",
-  "%Name":"oWall",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"oMovePlatform",
+  "eventList":[],
   "managed":true,
-  "name":"oWall",
+  "name":"oMovePlatform",
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
     "path":"folders/Objects.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"oWall",
+    "path":"objects/oWall/oWall.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -30,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sWall",
-    "path":"sprites/sWall/sWall.yy",
+    "name":"sMovePlatform",
+    "path":"sprites/sMovePlatform/sMovePlatform.yy",
   },
   "spriteMaskId":null,
   "visible":true,

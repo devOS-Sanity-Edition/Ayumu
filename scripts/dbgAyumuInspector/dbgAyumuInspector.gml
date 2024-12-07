@@ -22,6 +22,8 @@ function dbgAyumuInspector() {
 	dbg_text_input(ref_create(oPlayer.id, "face"), "Facing: ", "i")
 	dbg_text_input(ref_create(oPlayer.id, "moveDir"), "Move Direction: ", "i")
 	dbg_text_input(ref_create(oPlayer.id, "crouching"), "Crouching?", "i")
+	dbg_text_input(ref_create(oPlayer.id, "crouchTimer"), "Crouch Timer", "i")
+	
 	dbg_text_separator("Editable values")
 	dbg_text_input(ref_create(oPlayer.id, "moveSpeed", 0), "Walking speed", "f")
 	dbg_text_input(ref_create(oPlayer.id, "moveSpeed", 1), "Sprinting speed", "f")

@@ -76,10 +76,12 @@ coyoteJumpFrames = 0
 
 // Moving platforms
 floorPlatform = noone
+earlyMovePlatformXSpeed = false
 downSlopeSemiSolid = noone
 forgetSemiSolid = noone
 movePlatformXSpeed = 0
 movePlatformYSpeed = termVel // this can be a different value for a player falling w/ a downwards moving platform, but lets keep it to terminal velocity
+
 
 // Sprites
 maskSpr = sPlayerIdleBlink

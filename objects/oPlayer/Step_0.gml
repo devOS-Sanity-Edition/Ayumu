@@ -2,6 +2,90 @@
 
 getControls()
 
+#region
+// Get out of solid movePlatforms that have positioned themselves into the player in the begin step
+var _rightWall = noone
+var _leftWall = noone
+var _bottomWall = noone
+var _topWall = noone
+var _list = ds_list_create()
+var _listSize  = instance_place_list(x, y, oMovePlatform, _list, false)
+
+// Loop through all colliding move platforms
+for (var i = 0; i < _listSize; i++) {
+	var _listInst = _list[| i]
+	
+	// If there are walls to the right of me, get the closest one
+	// Right walls
+	if _listInst.bbox_left - _listInst.xSpeed >= bbox_right - 1 {
+		if !instance_exists(_rightWall) || _listInst.bbox_left < _rightWall.bbox_left {
+			_rightWall = _listInst
+		}
+	}
+	// Left walls
+	if _listInst.bbox_right - _listInst.xSpeed <= bbox_left - 1 {
+		if !instance_exists(_leftWall) || _listInst.bbox_right > _leftWall.bbox_right{
+			_leftWall = _listInst
+		}
+	}
+	
+	// Bottom walls
+	if _listInst.bbox_top - _listInst.ySpeed >= bbox_bottom - 1 {
+		if !_bottomWall || _listInst.bbox_top < _bottomWall.bbox_top {
+			_bottomWall = _listInst
+		}
+	}
+	
+	// Top walls
+	if _listInst.bbox_bottom - _listInst.ySpeed <= bbox_top + 1 {
+		if !_topWall || _listInst.bbox_bottom > _topWall.bbox_bottom {
+			_topWall = _listInst
+		}
+	}
+}
+
+// Destroy DS List, memory leak not happening
+ds_list_destroy(_list)
+
+// Get out of the walls
+// Right wall
+if instance_exists(_rightWall) {
+	var _rightDistance = bbox_right - x
+	x = _rightWall.bbox_left - _rightDistance
+}
+// Left wall
+if instance_exists(_leftWall) {
+	var _leftDistance = x - bbox_left
+	x = _leftWall.bbox_right + _leftDistance
+}
+// Bottom wall
+if instance_exists(_bottomWall) {
+	var _bottomDistance = bbox_bottom - y
+	y = _bottomWall.bbox_top - _bottomDistance
+}
+// Top wall [includes collision for polish and crouching features]
+if instance_exists(_topWall) {
+	var _upDistance = y - bbox_top
+	var _targetY = _topWall.bbox_bottom + _upDistance
+	
+	// Check if there isn't a wall in the way
+	if !place_meeting(x, _targetY, oWall) {
+		y = _targetY
+	}
+}
+#endregion
+
+// Don't get left behind by movePlatform
+earlyMovePlatformXSpeed = false
+if instance_exists(floorPlatform) && floorPlatform.xSpeed != 0 && !place_meeting(x, y + movePlatformYSpeed + 1, floorPlatform) {
+	var _xCheck = floorPlatform.xSpeed
+	// Go ahead and move player back onto that platform if there is no wall in the way
+	if !place_meeting(x + _xCheck, y, oWall) {
+		x += _xCheck
+		earlyMovePlatformXSpeed = true
+	}
+}
+
 /// X movement
 // Direction
 moveDir = rightKey - leftKey
@@ -296,8 +380,10 @@ if downKey && jumpKey {
 	}
 }
 
-// Move
-y += ySpeed
+// Move [and added anti-stuck for the very very rare occasion]
+if !place_meeting(x, y + ySpeed, oWall) {
+	y += ySpeed
+}
 
 // Reset forgetSemiSolid var
 if instance_exists(forgetSemiSolid) && !place_meeting(x, y, forgetSemiSolid) {
@@ -312,23 +398,25 @@ if instance_exists(floorPlatform) {
 	movePlatformXSpeed = floorPlatform.xSpeed
 }
 
-// Move with movePlatformXSpeed
-if place_meeting(x + movePlatformXSpeed, y, oWall) {
-	// Scoot up to wall precisely
-	var _subPixel = .5
-	var _pixelCheck = _subPixel * sign(movePlatformXSpeed)
-	while !place_meeting(x + _pixelCheck, y, oWall) {
-		x += _pixelCheck
-	}
+if !earlyMovePlatformXSpeed {
+	// Move with movePlatformXSpeed
+	if place_meeting(x + movePlatformXSpeed, y, oWall) {
+		// Scoot up to wall precisely
+		var _subPixel = .5
+		var _pixelCheck = _subPixel * sign(movePlatformXSpeed)
+		while !place_meeting(x + _pixelCheck, y, oWall) {
+			x += _pixelCheck
+		}
 	
-	// Set movePlatforXSpeed to 0 to finish collision
-	movePlatformXSpeed = 0
+		// Set movePlatforXSpeed to 0 to finish collision
+		movePlatformXSpeed = 0
+	}
+
+	// Move
+	x += movePlatformXSpeed
 }
 
-// Move
-x += movePlatformXSpeed
-
-// Y - Snap player to the floorPlatform
+// Y - Snap player to the floorPlatform if it's moving vertically
 if instance_exists(floorPlatform) && (floorPlatform.ySpeed != 0
 	|| floorPlatform.object_index == oMovePlatform
 	|| object_is_ancestor(floorPlatform.object_index, oMovePlatform)
@@ -339,7 +427,8 @@ if instance_exists(floorPlatform) && (floorPlatform.ySpeed != 0
 		y = floorPlatform.bbox_top
 	}
 	
-	// Going up into a solid wall while on a semi-solid platform
+	// Made redundant by code below this chunk
+	/*/ Going up into a solid wall while on a semi-solid platform
 	if floorPlatform.ySpeed < 0 && place_meeting(x, y + floorPlatform.ySpeed, oWall) {
 		// Get pushed down through the semi-solid floor platform
 		if floorPlatform.object_index == oSemiSolidWall || object_is_ancestor(floorPlatform.object_index, oSemiSolidWall) {
@@ -359,9 +448,110 @@ if instance_exists(floorPlatform) && (floorPlatform.ySpeed != 0
 			// Cancel the floor platform variable
 			setOnGround(false)
 		}
+	}/*/
+}
+
+// Get pushed down through a semi-solid by a moving solid platform
+if instance_exists(floorPlatform)
+&& (floorPlatform.object_index == oSemiSolidWall || object_is_ancestor(floorPlatform.object_index, oSemiSolidWall))
+&& place_meeting(x, y, oWall) {
+	// If player is already stuck in a wall at this point, try to move player down to get below a semi-solid
+	// If player is still stuck afterwards, player has been properly crushed
+	
+	// Also don't check too far, don't want to warp below walls
+	var _maxPushDistance = 10
+	var _pushedDistance = 0
+	var _startY = y
+	
+	while place_meeting(x, y, oWall) && _pushedDistance <= _maxPushDistance {
+		y++
+		_pushedDistance++
+	}
+	
+	// Forget floorPlatform
+	setOnGround(false)
+	
+	// If still in a wall at this point, player has been crushed regardless, take back to start Y
+	if _pushedDistance > _maxPushDistance {
+		y = _startY
 	}
 }
 
+// Brute force Anti-stuck, use as death in the future maybe?
+// Ideally if you're shoved into a wall, I'd rather you get teleported back to spawn instead of just teleported a bit, idk, that's just me tho
+// https://www.youtube.com/watch?v=WPdMw8jt0aU
+if place_meeting(x, y, [oWall, oMovePlatform]) {
+	for (var i = 0; i < 1000; ++i) {
+			// Right
+			if !place_meeting(x + i, y, oWall) {
+				// x += i
+				x += oSpawnPoint.x
+				y += oSpawnPoint.y
+				break
+			}
+		
+			// Left
+			if !place_meeting(x - i, y, oWall) {
+				// x -= i
+				x += oSpawnPoint.x
+				y += oSpawnPoint.y
+				break
+			}
+		
+			// Up
+			if !place_meeting(x, y - 1, oWall) {
+				// y -= 1
+				x += oSpawnPoint.x
+				y += oSpawnPoint.y
+				break
+			}
+		
+			// Down
+			if !place_meeting(x, y + i, oWall) {
+				// y += 1
+				x += oSpawnPoint.x
+				y += oSpawnPoint.y
+				break
+			}
+		
+			// Top Right
+			if !place_meeting(x + i, y - i, oWall) {
+				//x += i
+				//y -= i
+				x += oSpawnPoint.x
+				y += oSpawnPoint.y
+				break
+			}
+		
+			// Top Left
+			if !place_meeting(x - i, y - i, oWall) {
+				//x -= 1
+				//y -= 1
+				x += oSpawnPoint.x
+				y += oSpawnPoint.y
+				break
+			}
+		
+			// Bottom Right
+			if !place_meeting(x + i, y + i, oWall) {
+				//x += i
+				//y += i
+				x += oSpawnPoint.x
+				y += oSpawnPoint.y
+				break
+			}
+		
+			// Bottom Left
+			if !place_meeting(x - i, y + i, oWall) {
+				//x -= 1
+				//y += 1
+				x += oSpawnPoint.x
+				y += oSpawnPoint.y
+				break
+			}
+		}
+	
+}
 
 /// Sprite Control
 // Walking

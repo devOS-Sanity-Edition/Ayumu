@@ -47,11 +47,13 @@ controlsSetup()
 // Moving
 face = 1
 moveDir = 0
+crouchSpeed = 0.75
 runType = 0
-moveSpeed[0] = 2.5
-moveSpeed[1] = 4
+moveSpeed[0] = 2.5 // walking
+moveSpeed[1] = 4 // sprinting
 xSpeed = 0
 ySpeed = 0
+crouchTimer = 15
 
 // State variables
 crouching = false
@@ -88,6 +90,7 @@ movePlatformYSpeed = termVel // this can be a different value for a player falli
 
 // Sprites
 maskSpr = sPlayerIdleBlink
+crouchMaskSpr = sPlayerDuckDownRight
 idleBobSprRight = sPlayerIdleBobRight
 idleBobSprLeft = sPlayerIdleBobLeft
 walkRunSprRight = sPlayerWalkRunRight
@@ -96,8 +99,12 @@ jumpSprRight = sPlayerJumpRight
 jumpSprLeft = sPlayerJumpLeft
 turnSpr = sPlayerTurn
 crouchSprUpLeft = sPlayerDuckUpLeft
+crouchSprUpRight = sPlayerDuckUpRight
+crouchSprDownLeft = sPlayerDuckDownLeft
+crouchSprDownRight = sPlayerDuckDownRight
 currentSpriteName = sprite_get_name(oPlayer.sprite_index[0])
 currentSpriteSpeed = sprite_get_speed(oPlayer.sprite_index[0])
+currentMaskIndex = sprite_get_name(oPlayer.mask_index[0])
 
 // Other
 roofBonkingFix = true

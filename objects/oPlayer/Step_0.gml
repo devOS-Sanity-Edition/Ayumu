@@ -86,6 +86,32 @@ if instance_exists(floorPlatform) && floorPlatform.xSpeed != 0 && !place_meeting
 	}
 }
 
+// Crouching
+// Transition to crouch
+// Manual
+if onGround && (downKey || place_meeting(x, y, oWall)) {
+	crouching = true
+	crouchTimer++
+}
+
+// Change collision mask
+if crouching {
+	mask_index = crouchMaskSpr
+}
+
+// Transition out of crouching
+// Manual = !downKey | Automatic = !onGround
+if crouching && (!downKey || !onGround) {
+	// Check if i can uncrouch
+	mask_index = maskSpr
+	// Uncrouch if no solid wall in the way
+	if !place_meeting(x, y, oWall) {
+		crouching = false
+	} else { // Go back to crouching mask index if we can't uncrouch
+		mask_index = crouchMaskSpr
+	}
+}
+
 /// X movement
 // Direction
 moveDir = rightKey - leftKey
@@ -99,6 +125,11 @@ if moveDir != 0 {
 runType = runKey
 // if runOnlyLevel { runType = 1 }
 xSpeed = moveDir * moveSpeed[runType]
+
+// Little movement while crouching
+if crouching {
+	xSpeed = moveDir * crouchSpeed
+}
 
 // X collision
 var _subPixel = .5
@@ -617,8 +648,38 @@ if !onGround {
 	}
 }
 
+
+if crouching {
+	switch (face) {
+		case 1:
+			sprite_index = crouchSprDownRight
+			sprite_set_speed(sprite_index, 1, spritespeed_framespersecond)
+			sprite_set_speed(sprite_index, 0, spritespeed_framespersecond)
+			crouchTimer--
+			if crouchTimer >= 0 {
+				image_index = image_number - 1
+				sprite_set_speed(sprite_index, 0, spritespeed_framespersecond)
+			}
+			break
+		case -1:
+			sprite_index = crouchSprDownLeft
+			sprite_set_speed(sprite_index, 1, spritespeed_framespersecond)
+			crouchTimer--
+			if crouchTimer >= 0 {
+				image_index = image_number - 1
+				sprite_set_speed(sprite_index, 0, spritespeed_framespersecond)
+			}
+			break
+		default:
+			break;
+	}
+}
+
 // set collision mask
 mask_index = maskSpr
+if crouching {
+	mask_index = crouchMaskSpr
+}
 image_xscale = sign(face)
 currentSpriteName = sprite_get_name(self.sprite_index[0])
 currentSpriteSpeed = sprite_get_speed(self.sprite_index[0])

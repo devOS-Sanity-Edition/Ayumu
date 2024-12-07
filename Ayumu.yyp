@@ -39,6 +39,7 @@
   "resources":[
     {"id":{"name":"oCamera","path":"objects/oCamera/oCamera.yy",},},
     {"id":{"name":"oDebug","path":"objects/oDebug/oDebug.yy",},},
+    {"id":{"name":"oDebugView","path":"objects/oDebugView/oDebugView.yy",},},
     {"id":{"name":"oGlobal","path":"objects/oGlobal/oGlobal.yy",},},
     {"id":{"name":"oInvisWall","path":"objects/oInvisWall/oInvisWall.yy",},},
     {"id":{"name":"oMovePlatform","path":"objects/oMovePlatform/oMovePlatform.yy",},},
@@ -50,6 +51,7 @@
     {"id":{"name":"oSlope1","path":"objects/oSlope1/oSlope1.yy",},},
     {"id":{"name":"oSlope2","path":"objects/oSlope2/oSlope2.yy",},},
     {"id":{"name":"oSlope3","path":"objects/oSlope3/oSlope3.yy",},},
+    {"id":{"name":"oSpawnPoint","path":"objects/oSpawnPoint/oSpawnPoint.yy",},},
     {"id":{"name":"oWall","path":"objects/oWall/oWall.yy",},},
     {"id":{"name":"Path1","path":"paths/Path1/Path1.yy",},},
     {"id":{"name":"rmInit","path":"rooms/rmInit/rmInit.yy",},},

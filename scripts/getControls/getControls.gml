@@ -20,10 +20,10 @@ function getControls() {
 	jumpKey = keyboard_check(vk_space)
 	jumpKey = clamp(jumpKey, 0, 1)
 	
-	downKey = keyboard_check(vk_down)
+	downKey = keyboard_check(ord("S")) + keyboard_check(vk_down)
 	downKey = clamp(downKey, 0, 1)
 	
-	upKey = keyboard_check(vk_up)
+	upKey = keyboard_check(ord("W")) + keyboard_check(vk_up)
 	upKey = clamp(upKey, 0, 1)
 	
 	runKey = keyboard_check(vk_shift)

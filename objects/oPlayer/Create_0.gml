@@ -90,6 +90,8 @@ walkRunSprLeft = sPlayerWalkRunLeft
 jumpSprRight = sPlayerJumpRight
 jumpSprLeft = sPlayerJumpLeft
 turnSpr = sPlayerTurn
+currentSpriteName = sprite_get_name(oPlayer.sprite_index[0])
+currentSpriteSpeed = sprite_get_speed(oPlayer.sprite_index[0])
 
 // Other
 roofBonkingFix = true

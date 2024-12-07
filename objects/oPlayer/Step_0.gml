@@ -98,7 +98,7 @@ if jumpKeyBuffered && jumpCount < jumpMax && (!downKey || _floorIsSolid) {
 	jumpCount++
 	
 	// Set the jump hold timer
-	jumpHoldTimer = jumpHoldFrames[jumpCount = 1] // turns out it has to be equals 1 or else double jump doesnt work proper
+	jumpHoldTimer = jumpHoldFrames[jumpCount = 2] // this is going to haunt me later with trying to fix coyote jump, if it is even fixed already
 	// Tell outself we're no longer on the ground
 	setOnGround(false)
 }
@@ -110,7 +110,7 @@ if !jumpKey {
 
 // Jump based on the timer/holding the button
 if jumpHoldTimer > 0 {
-	// Constantly set the ySpeed to be jumping pseed
+	// Constantly set the ySpeed to be jumping speed
 	ySpeed = jumpSpeed[jumpCount - 1]
 	
 	// Count down the timer
@@ -367,11 +367,11 @@ if abs(xSpeed) > 0 {
 	switch (face) {
 		case 1:
 			sprite_index = walkRunSprRight
-			sprite_set_speed(sprite_index, 10, spritespeed_framespersecond)
+			sprite_set_speed(sprite_index, 20, spritespeed_framespersecond)
 			break
 		case -1:
 			sprite_index = walkRunSprLeft
-			sprite_set_speed(sprite_index, 10, spritespeed_framespersecond)
+			sprite_set_speed(sprite_index, 20, spritespeed_framespersecond)
 			break
 		default:
 			break
@@ -414,11 +414,11 @@ if !onGround {
 	switch (face) {
 		case 1:
 			sprite_index = jumpSprRight
-			sprite_set_speed(sprite_index, 15, spritespeed_framespersecond)
+			sprite_set_speed(sprite_index, 30, spritespeed_framespersecond)
 			break
 		case -1:
 			sprite_index = jumpSprLeft
-			sprite_set_speed(sprite_index, 15, spritespeed_framespersecond)
+			sprite_set_speed(sprite_index, 30, spritespeed_framespersecond)
 			break
 		default:
 			break		
@@ -428,3 +428,5 @@ if !onGround {
 // set collision mask
 mask_index = maskSpr
 image_xscale = sign(face)
+currentSpriteName = sprite_get_name(self.sprite_index[0])
+currentSpriteSpeed = sprite_get_speed(self.sprite_index[0])

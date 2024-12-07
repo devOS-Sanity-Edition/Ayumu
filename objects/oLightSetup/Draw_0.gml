@@ -27,7 +27,7 @@ for (var i = 0; i < array_length(objects); i++) {
 		shader_set(shdrLight)
 		shader_set_uniform_f(_u_pos, x, y)
 		shader_set_uniform_f(_u_zz, size)
-		shader_set_uniform_f(_u_str, str);
+		shader_set_uniform_f(_u_str, str)
 		// setting the x and y for this also redundant for reason on line 10 above
 		draw_rectangle_color(view_xport[view_current], view_yport[view_current], room_width, room_height, color, color, color, color, 0)
 		//draw_surface_ext(application_surface, view_xport[view_current], view_yport[view_current], 1, 1, 0, color, 1)
@@ -38,8 +38,6 @@ for (var i = 0; i < array_length(objects); i++) {
 gpu_set_blendmode_ext(bm_dest_color, bm_src_alpha)
 shader_reset()
 //draw_surface(application_surface, view_xport[view_current], view_yport[view_current])
-
-
 surface_reset_target()
 
 // refer to line 10

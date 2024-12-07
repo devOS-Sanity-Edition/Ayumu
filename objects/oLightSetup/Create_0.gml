@@ -4,8 +4,8 @@ application_surface_draw_enable(false)
 
 u_pos = shader_get_uniform(shdrLight, "u_pos")
 u_zz = shader_get_uniform(shdrLight, "zz")
+u_str = shader_get_uniform(shdrLight, "u_str")
 u_pos2 = shader_get_uniform(shdrShadow, "u_pos")
-u_str = shader_get_uniform(shdrShadow, "u_str")
 
 vertex_format_begin()
 vertex_format_add_position_3d()

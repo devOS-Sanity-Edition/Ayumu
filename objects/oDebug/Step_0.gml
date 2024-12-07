@@ -12,13 +12,13 @@ if (!surface_exists(surf)) {
 // Menu
 var exit_modal = false;
 ImGui.BeginMainMenuBar();
-if (ImGui.BeginMenu("File")) {
-	if (ImGui.MenuItem("Enable Viewport", undefined, enable_docking)) {
-		enable_docking = !enable_docking;
-	}
-	
+if (ImGui.BeginMenu("Options")) {
 	if (ImGui.MenuItem("Player Statistics", undefined, enablePlayerStats)) {
 		enablePlayerStats = !enablePlayerStats
+	}
+	
+	if (ImGui.MenuItem("Enable Viewport", undefined, enable_docking)) {
+		enable_docking = !enable_docking;
 	}
 	
 	ImGui.Separator();

@@ -57,6 +57,7 @@
     {"id":{"name":"rmInit","path":"rooms/rmInit/rmInit.yy",},},
     {"id":{"name":"rmTest","path":"rooms/rmTest/rmTest.yy",},},
     {"id":{"name":"rmTest2","path":"rooms/rmTest2/rmTest2.yy",},},
+    {"id":{"name":"consoleCommands","path":"scripts/consoleCommands/consoleCommands.yy",},},
     {"id":{"name":"getBuildDate","path":"scripts/getBuildDate/getBuildDate.yy",},},
     {"id":{"name":"getControls","path":"scripts/getControls/getControls.yy",},},
     {"id":{"name":"ImGui_Misc","path":"scripts/ImGui_Misc/ImGui_Misc.yy",},},

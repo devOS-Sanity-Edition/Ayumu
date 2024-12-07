@@ -26,7 +26,10 @@
   "physicsShape":1,
   "physicsShapePoints":[],
   "physicsStartAwake":true,
-  "properties":[],
+  "properties":[
+    {"$GMObjectProperty":"v1","%Name":"midX","filters":[],"listItems":[],"multiselect":false,"name":"midX","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"(3 * x + oSlope0.sprite_width) / 3","varType":0,},
+    {"$GMObjectProperty":"v1","%Name":"midY","filters":[],"listItems":[],"multiselect":false,"name":"midY","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"(3 * y + 2 * oSlope0.sprite_height) / 3","varType":0,},
+  ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,

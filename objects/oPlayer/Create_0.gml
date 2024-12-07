@@ -53,6 +53,9 @@ moveSpeed[1] = 4
 xSpeed = 0
 ySpeed = 0
 
+// State variables
+crouching = false
+
 // Jumping
 grav = 0.275
 termVel = 4
@@ -92,6 +95,7 @@ walkRunSprLeft = sPlayerWalkRunLeft
 jumpSprRight = sPlayerJumpRight
 jumpSprLeft = sPlayerJumpLeft
 turnSpr = sPlayerTurn
+crouchSprUpLeft = sPlayerDuckUpLeft
 currentSpriteName = sprite_get_name(oPlayer.sprite_index[0])
 currentSpriteSpeed = sprite_get_speed(oPlayer.sprite_index[0])
 

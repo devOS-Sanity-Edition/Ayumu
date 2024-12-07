@@ -56,6 +56,8 @@ if ySpeed >= 0 && !place_meeting(x + xSpeed, y + 1, oWall) && place_meeting(x + 
 	}
 }
 
+
+
 // Move
 x += xSpeed
 

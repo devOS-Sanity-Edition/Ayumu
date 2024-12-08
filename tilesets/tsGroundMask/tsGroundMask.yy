@@ -1,14 +1,19 @@
 {
   "$GMTileSet":"v1",
-  "%Name":"tsbackgroundTile",
-  "autoTileSets":[],
+  "%Name":"tsGroundMask",
+  "autoTileSets":[
+    {"$GMAutoTileSet":"","%Name":"autotile_1","closed_edge":false,"name":"autotile_1","resourceType":"GMAutoTileSet","resourceVersion":"2.0","tiles":[
+        14,17,16,31,4,35,42,11,5,30,34,10,43,22,23,46,13,18,6,41,2,32,33,28,15,7,19,29,26,45,44,40,24,38,1,8,
+        3,9,27,21,25,20,12,37,36,39,47,
+      ],},
+  ],
   "macroPageTiles":{
     "SerialiseHeight":0,
     "SerialiseWidth":0,
     "TileSerialiseData":[],
   },
-  "name":"tsbackgroundTile",
-  "out_columns":1,
+  "name":"tsGroundMask",
+  "out_columns":7,
   "out_tilehborder":2,
   "out_tilevborder":2,
   "parent":{
@@ -18,8 +23,8 @@
   "resourceType":"GMTileSet",
   "resourceVersion":"2.0",
   "spriteId":{
-    "name":"sBackgroundTile",
-    "path":"sprites/sBackgroundTile/sBackgroundTile.yy",
+    "name":"sGroundMask",
+    "path":"sprites/sGroundMask/sGroundMask.yy",
   },
   "spriteNoExport":false,
   "textureGroupId":{
@@ -34,5 +39,5 @@
   "tileWidth":16,
   "tilexoff":0,
   "tileyoff":0,
-  "tile_count":2,
+  "tile_count":48,
 }

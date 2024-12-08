@@ -1,7 +1,7 @@
 {
   "$GMShader":"",
-  "%Name":"shdrSlimeColor",
-  "name":"shdrSlimeColor",
+  "%Name":"shdrColorSwap",
+  "name":"shdrColorSwap",
   "parent":{
     "name":"Shaders",
     "path":"folders/Shaders.yy",

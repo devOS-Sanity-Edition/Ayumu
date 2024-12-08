@@ -584,13 +584,14 @@ if place_meeting(x, y, [oWall, oMovePlatform]) {
 	
 }
 
-/// Sprite Control
+/// Sprite and Particle Control
 // Walking
 if abs(xSpeed) > 0 {
 	switch (face) {
 		case 1:
 			sprite_index = walkRunSprRight
 			sprite_set_speed(sprite_index, 20, spritespeed_framespersecond)
+//			part_particles_create(testDustParticle, x, y, )
 			break
 		case -1:
 			sprite_index = walkRunSprLeft

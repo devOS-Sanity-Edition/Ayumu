@@ -1,6 +1,6 @@
 surface_resize(application_surface, view_wport[view_current], view_hport[view_current])
 display_set_gui_maximize()
-application_surface_draw_enable(false)
+application_surface_draw_enable(true)
 
 u_pos = shader_get_uniform(shdrLight, "u_pos")
 u_zz = shader_get_uniform(shdrLight, "zz")

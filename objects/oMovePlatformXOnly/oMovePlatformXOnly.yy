@@ -10,7 +10,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"random",
-    "path":"folders/Objects/random.yy",
+    "path":"folders/Objects/tiles/random.yy",
   },
   "parentObjectId":{
     "name":"oMovePlatform",

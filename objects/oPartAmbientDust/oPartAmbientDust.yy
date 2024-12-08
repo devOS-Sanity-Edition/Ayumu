@@ -1,21 +1,17 @@
 {
   "$GMObject":"",
-  "%Name":"oSemiSolidMovePlatform",
+  "%Name":"oPartAmbientDust",
   "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":1,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"oSemiSolidMovePlatform",
+  "name":"oPartAmbientDust",
   "overriddenProperties":[],
   "parent":{
-    "name":"tiles",
-    "path":"folders/Objects/tiles.yy",
+    "name":"particles",
+    "path":"folders/Objects/particles.yy",
   },
-  "parentObjectId":{
-    "name":"oSemiSolidWall",
-    "path":"objects/oSemiSolidWall/oSemiSolidWall.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -33,10 +29,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"sSemiSolidMovePlatform",
-    "path":"sprites/sSemiSolidMovePlatform/sSemiSolidMovePlatform.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }

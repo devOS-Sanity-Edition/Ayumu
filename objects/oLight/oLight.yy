@@ -6,8 +6,8 @@
   "name":"oLight",
   "overriddenProperties":[],
   "parent":{
-    "name":"important",
-    "path":"folders/Objects/important.yy",
+    "name":"lighting",
+    "path":"folders/Objects/lighting.yy",
   },
   "parentObjectId":null,
   "persistent":false,

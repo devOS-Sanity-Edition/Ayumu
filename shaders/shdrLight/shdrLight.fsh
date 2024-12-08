@@ -11,5 +11,6 @@ void main() {
 	float str = 1.0 / (sqrt(dis.x * dis.x + dis.y * dis.y + zz * zz) -zz) * u_str;
 	
 	vec4 frag = texture2D(gm_BaseTexture, v_vTexcoord);
+    // gl_FragColor = floor (col * vec4(vec3(str), 1.0)) / 32.0 * frag * str; // floored shitty ``banding``
     gl_FragColor = col * vec4(vec3(str), 1.0) * frag * str;
 }

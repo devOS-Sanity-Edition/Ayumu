@@ -11,8 +11,8 @@
     {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"oLight","path":"objects/oLight/oLight.yy",},"propertyId":{"name":"str","path":"objects/oLight/oLight.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"1",},
   ],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"lighting",
+    "path":"folders/Objects/lighting.yy",
   },
   "parentObjectId":{
     "name":"oLight",

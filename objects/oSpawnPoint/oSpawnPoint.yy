@@ -6,8 +6,8 @@
   "name":"oSpawnPoint",
   "overriddenProperties":[],
   "parent":{
-    "name":"important",
-    "path":"folders/Objects/important.yy",
+    "name":"world",
+    "path":"folders/Objects/world.yy",
   },
   "parentObjectId":null,
   "persistent":false,

@@ -6,8 +6,8 @@
   "name":"oMovingLight",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"lighting",
+    "path":"folders/Objects/lighting.yy",
   },
   "parentObjectId":{
     "name":"oLight",

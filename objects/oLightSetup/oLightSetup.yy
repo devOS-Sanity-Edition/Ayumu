@@ -11,8 +11,8 @@
   "name":"oLightSetup",
   "overriddenProperties":[],
   "parent":{
-    "name":"lighting",
-    "path":"folders/Objects/lighting.yy",
+    "name":"important",
+    "path":"folders/Objects/important.yy",
   },
   "parentObjectId":null,
   "persistent":true,

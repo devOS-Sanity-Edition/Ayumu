@@ -39,7 +39,7 @@ function checkForSemiSolidPlatform(_x, _y) {
 	return _rtrn
 }
 
-depth = -30
+depth = layer_get_depth("Player")
 
 // Controls setup
 controlsSetup()

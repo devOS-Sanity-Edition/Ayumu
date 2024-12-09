@@ -32,6 +32,9 @@ function getControls() {
 	dashKey = keyboard_check(vk_control)
 	dashKey = clamp(dashKey, 0, 1)
 	
+	interactKey = keyboard_check_pressed(ord("E"))
+	interactKey = clamp(interactKey, 0, 1)
+	
 	// Jump key buffering
 	if jumpKeyPressed {
 		jumpKeyBufferTimer = bufferTime

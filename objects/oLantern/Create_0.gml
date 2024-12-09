@@ -10,6 +10,4 @@ brightPaletteB = color_get_blue(brightPaletteColor)
 // Shader Color Swap
 colorSwapSetup()
 
-
 light = instance_create_layer(x + relativeX, y + relativeY, "Light", oLight)
-

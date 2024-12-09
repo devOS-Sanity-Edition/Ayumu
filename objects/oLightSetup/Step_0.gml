@@ -27,10 +27,12 @@ with (oWall) {
 	quad(_vb, x + sprite_width, y, x, y + sprite_height)
 }/*/
 
-//with (oSlope0) { // i give up on slopes
+
+
+with (oSlope0) { // i give up on slopes
 //	quad(_vb, x, y, oSlope0.midX, oSlope0.midY)
 //	quad(_vb, x, y + sprite_height, oSlope0.midX, oSlope0.midY)
 //	quad(_vb, x + sprite_width, y + sprite_height, oSlope0.midX, oSlope0.midY)
-//}
+}
 
 vertex_end(vb)

@@ -111,9 +111,6 @@ roofBonkingFix = true
 wallAreYouDoing = [oWall, oInvisWall]
 
 // Shader Color Swap
-color_old1 = shader_get_uniform(shdrColorSwap, "color_old1")
-color_new1 = shader_get_uniform(shdrColorSwap, "color_new1")
-color_old2 = shader_get_uniform(shdrColorSwap, "color_old2")
-color_new2 = shader_get_uniform(shdrColorSwap, "color_new2")
+dualColorSwapSetup()
 
 instance_create_layer(x, y, "Light", oPlayerLight)

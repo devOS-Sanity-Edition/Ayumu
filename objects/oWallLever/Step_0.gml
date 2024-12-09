@@ -9,6 +9,7 @@ if (place_meeting(x, y, oPlayer) && interactKey) {
 		with (oDoor) {
 			if (self.doorId == other.doorId) {
 				switchTriggered = true
+				leverSwitched = true
 			}
 		}
 	}

@@ -2,6 +2,10 @@
 
 getControls()
 
+// Have camera object follow player
+oCamera.x = x
+oCamera.y = y 
+
 #region
 // Get out of solid movePlatforms that have positioned themselves into the player in the begin step
 var _rightWall = noone
@@ -282,32 +286,6 @@ if ySpeed < 0 && place_meeting(x, y + ySpeed, oWall) {
 
 // Downwards Y collision
 var _subPixel = .5
-//if ySpeed > 0 { // do not make this an `ySpeed >= 0` because you'll end up floating weirdly, thank you Acer for helping me fix this
-//	if place_meeting(x, y + ySpeed, oWall) {
-//		// Scoot up to the wall precisely
-//		var _pixelCheck = _subPixel * sign(ySpeed)
-//
-//		while !place_meeting(x, y + _pixelCheck, oWall) {
-//			y += _pixelCheck
-//		}
-//	
-//		// Roof Bonking [ might remove bc it is kinda funny ]
-//		// hello aubrey 5 minutes after that was made, lets make this a bool instead lmao
-//		if (roofBonkingFix == true) {
-//			if ySpeed < 0 {
-//				jumpHoldTimer = 0
-//			}
-//		}
-//		
-//		// Set ySpeed to 0 to collide
-//		ySpeed = 0
-//	}
-//	
-//	// Set if on ground
-//	if ySpeed == 0 {
-//		setOnGround(true)
-//	}	
-//}
 
 // Floor Y Collision
 // Check for solid and semisolid platforms under player
@@ -457,29 +435,6 @@ if instance_exists(floorPlatform) && (floorPlatform.ySpeed != 0
 	if !place_meeting(x, floorPlatform.bbox_top, oWall) && floorPlatform.bbox_top >= bbox_bottom - movePlatformYSpeed {
 		y = floorPlatform.bbox_top
 	}
-	
-	// Made redundant by code below this chunk
-	/*/ Going up into a solid wall while on a semi-solid platform
-	if floorPlatform.ySpeed < 0 && place_meeting(x, y + floorPlatform.ySpeed, oWall) {
-		// Get pushed down through the semi-solid floor platform
-		if floorPlatform.object_index == oSemiSolidWall || object_is_ancestor(floorPlatform.object_index, oSemiSolidWall) {
-			// Get pushed down through the semi-solid
-			var _subPixel = .25
-			while place_meeting(x, y + floorPlatform.ySpeed, oWall) {
-				y += _subPixel
-			}
-			
-			// If we get pushed into a solid wall while going downwards, push player back out
-			while place_meeting(x, y, oWall) {
-				y -= _subPixel
-			}
-			
-			y = round(y)
-			
-			// Cancel the floor platform variable
-			setOnGround(false)
-		}
-	}/*/
 }
 
 // Get pushed down through a semi-solid by a moving solid platform

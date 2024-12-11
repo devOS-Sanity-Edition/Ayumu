@@ -23,6 +23,7 @@ function dbgAyumuInspector() {
 	dbg_text_input(ref_create(oPlayer.id, "moveDir"), "Move Direction: ", "i")
 	dbg_text_input(ref_create(oPlayer.id, "crouching"), "Crouching?", "i")
 	dbg_text_input(ref_create(oPlayer.id, "crouchTimer"), "Crouch Timer", "i")
+	dbg_text_input(ref_create(oPlayer.id, ""))
 	
 	dbg_text_separator("Editable values")
 	dbg_text_input(ref_create(oPlayer.id, "moveSpeed", 0), "Walking speed", "f")
@@ -57,7 +58,7 @@ function dbgAyumuInspector() {
 	dbg_section("Sprite")
 	dbg_text_separator("Read only values [please do not edit / can't edit]")
 	dbg_text_input(ref_create(oPlayer.id, "currentSpriteName"), "Current")
-	dbg_text_separator("Editable values")
 	dbg_text_input(ref_create(oPlayer.id, "currentSpriteSpeed"), "Current Speed", "r")
-
+	dbg_sprite(ref_create(oPlayer.id, "sprite_index"), ref_create(oPlayer.id, "image_index"), "Sprite View", 64, 64)
+	dbg_text_separator("Editable values")
 }

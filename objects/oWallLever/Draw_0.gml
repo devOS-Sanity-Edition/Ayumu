@@ -71,4 +71,25 @@ if leverSwitched {
 }
 shader_reset()/*/
 
-hexaColorSwapTime(182, 216, 236, 124, 252, 0, 197, 227, 245, 114, 232, 0, 155, 185, 203, 114, 232, 0, 48, 63, 72, 255, 59, 59, 55, 77, 90, 255, 79, 79, 37, 48, 55, 255, 39, 39)
+//hexaColorSwapTimeGMColor(offLightColor, onLightColor, offMidColor, onMidColor, offDarkColor, onDarkColor)
+
+//hexaColorSwapTimeRGB(offLightColor, onLightColor, offMidColor, onMidColor, offDarkColor, onDarkColor)
+
+// this one works
+//hexaColorSwapTimeRGB([182, 216, 236], [124, 252, 0], [197, 227, 245], [114, 232, 0], [155, 185, 203], [114, 232, 0], [48, 63, 72], [255, 59, 59], [55, 77, 90], [255, 79, 79], [37, 48, 55], [255, 39, 39])
+//hexaColorSwapTime(182, 216, 236, 124, 252, 0, 197, 227, 245, 114, 232, 0, 155, 185, 203, 114, 232, 0, 48, 63, 72, 255, 59, 59, 55, 77, 90, 255, 79, 79, 37, 48, 55, 255, 39, 39)
+hexaColorSwapTimeRGB(
+	[48, 63, 72], // off
+	[color_get_red(offMidColor), color_get_green(offMidColor), color_get_blue(offMidColor)],
+	[55, 77, 90],
+	[color_get_red(offLightColor), color_get_green(offLightColor), color_get_blue(offLightColor)],
+	[37, 48, 55],
+	[color_get_red(offDarkColor), color_get_green(offDarkColor), color_get_blue(offDarkColor)],
+	
+	[182, 216, 236], // on
+	[color_get_red(onMidColor), color_get_green(onMidColor), color_get_blue(onMidColor)],
+	[197, 227, 245], 
+	[color_get_red(onLightColor), color_get_green(onLightColor), color_get_blue(onLightColor)],
+	[155, 185, 203],
+	[color_get_red(onDarkColor), color_get_green(onDarkColor), color_get_blue(onDarkColor)]
+	)

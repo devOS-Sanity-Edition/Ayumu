@@ -34,5 +34,5 @@
     "path":"sprites/sCameraBoundry/sCameraBoundry.yy",
   },
   "spriteMaskId":null,
-  "visible":true,
+  "visible":false,
 }

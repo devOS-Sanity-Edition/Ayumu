@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"otherFunctions",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"otherFunctions",
+  "parent":{
+    "name":"verletIntegration",
+    "path":"folders/Scripts/verletIntegration.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

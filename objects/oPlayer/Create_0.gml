@@ -109,6 +109,7 @@ currentMaskIndex = sprite_get_name(oPlayer.mask_index[0])
 // Other
 roofBonkingFix = true
 wallAreYouDoing = [oWall, oInvisWall]
+type = collisionType.box
 
 // Shader Color Swap
 dualColorSwapSetup()

@@ -1,1 +1,3 @@
+part_emitter_destroy_all(global.particleSystem)
+part_particles_clear(global.particleSystem)
 part_system_destroy(global.particleSystem)

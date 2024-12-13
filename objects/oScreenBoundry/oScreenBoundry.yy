@@ -1,15 +1,15 @@
 {
   "$GMObject":"",
-  "%Name":"oCameraBoundry",
+  "%Name":"oScreenBoundry",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"oCameraBoundry",
+  "name":"oScreenBoundry",
   "overriddenProperties":[],
   "parent":{
-    "name":"shelved",
-    "path":"folders/Objects/shelved.yy",
+    "name":"tiles",
+    "path":"folders/Objects/tiles.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -30,9 +30,9 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sCameraBoundry",
-    "path":"sprites/sCameraBoundry/sCameraBoundry.yy",
+    "name":"sScreenBoundry",
+    "path":"sprites/sScreenBoundry/sScreenBoundry.yy",
   },
   "spriteMaskId":null,
-  "visible":true,
+  "visible":false,
 }

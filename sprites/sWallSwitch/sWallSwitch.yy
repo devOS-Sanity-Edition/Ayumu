@@ -26,8 +26,8 @@
   "nineSlice":null,
   "origin":7,
   "parent":{
-    "name":"Switches",
-    "path":"folders/Sprites/Switches.yy",
+    "name":"switches",
+    "path":"folders/Sprites/switches.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

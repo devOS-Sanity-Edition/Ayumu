@@ -17,7 +17,7 @@ var _camX = oPlayer.x - _camWidth / 2
 var _camY = oPlayer.y - _camHeight / 2
 
 // Lock into camera boundry
-with instance_position(x, y, oCameraBoundry) {
+with instance_position(x, y, oScreenBoundry) {
 	viewXMin = bbox_left
 	viewXMax = bbox_right - _camWidth
 	viewYMin = bbox_top

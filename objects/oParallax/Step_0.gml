@@ -4,5 +4,5 @@
 //layer_hspeed(layerBackgroundIdGreen, 0)
 //layer_vspeed(layerBackgroundIdBlue, 0.125)
 //layer_hspeed(layerBackgroundIdBlue, -0.125)
-layer_vspeed(layerBackgroundId, backgroundSpeed)
-layer_hspeed(layerBackgroundId, backgroundSpeed)
+//layer_vspeed(layerBackgroundId, backgroundSpeed)
+//layer_hspeed(layerBackgroundId, backgroundSpeed)

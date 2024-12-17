@@ -1,0 +1,7 @@
+//draw_sprite_ext(sSkyLayer1, 0, camera_get_view_x(view_camera[0]), camera_get_view_y(view_camera[0]), 1, 1, 0, c_white, 1)
+//draw_sprite_ext(sSkyLayer2, 0, camera_get_view_x(view_camera[0]), camera_get_view_y(view_camera[0] - 96), 1, 1, 0, c_white, 1)
+//draw_sprite_ext(sSkyLayer3, 0, camera_get_view_x(view_camera[0]), camera_get_view_y(view_camera[0] - 192), 1, 1, 0, c_white, 1)
+//draw_sprite_ext(sSkyLayer4, 0, camera_get_view_x(view_camera[0]), camera_get_view_y(view_camera[0] - 288), 1, 1, 0, c_white, 1)
+//draw_sprite_ext(sSkyLayer5, 0, camera_get_view_x(view_camera[0]), camera_get_view_y(view_camera[0] - 384), 1, 1, 0, c_white, 1)
+//draw_sprite_ext(sSkyLayer6, 0, camera_get_view_x(view_camera[0]), camera_get_view_y(view_camera[0] - 480), 1, 1, 0, c_white, 1)
+//draw_sprite_ext(sSkyLayer7, 0, camera_get_view_x(view_camera[0]), camera_get_view_y(view_camera[0] - 576), 1, 1, 0, c_white, 1)

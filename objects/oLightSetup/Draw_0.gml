@@ -14,7 +14,7 @@ if (!surface_exists(shadowSurface)) {
 // this matrix seems redundant since my lights and shadows were already working w/ a moving camera, but im just following the tutorial so
 matrix_set(matrix_world, matrix_build(view_xport[view_current], view_yport[view_current], 0, 0, 0, 0, 1, 1, 1))
 surface_set_target(shadowSurface)
-draw_clear_alpha(c_black, 0)
+draw_clear_alpha(c_ltgray, 0)
 
 /*/
 var objects = [oLight, oLantern] // replace this with just a normal `with (oLight) {shadercodehere}` later

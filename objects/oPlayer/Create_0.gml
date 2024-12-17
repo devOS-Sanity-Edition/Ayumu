@@ -106,6 +106,20 @@ currentSpriteName = sprite_get_name(oPlayer.sprite_index[0])
 currentSpriteSpeed = sprite_get_speed(oPlayer.sprite_index[0])
 currentMaskIndex = sprite_get_name(oPlayer.mask_index[0])
 
+// Sounds
+hurtSound = sndHurt
+jumpSound = sndJump
+sfxVolume = global.sfxVolume * global.masterVolume
+
+// Health
+hp = 100
+hpMax = hp
+flash = 0
+healthbarWidth = 100
+healthbarHeight = 12
+healthbarX = (320 / 2) - (healthbarWidth / 2)
+healthbarY = ystart - 100
+
 // Other
 roofBonkingFix = true
 wallAreYouDoing = [oWall, oInvisWall]

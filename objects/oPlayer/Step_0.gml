@@ -6,6 +6,7 @@ getControls()
 oCamera.x = x
 oCamera.y = y 
 
+
 #region
 // Get out of solid movePlatforms that have positioned themselves into the player in the begin step
 var _rightWall = noone
@@ -222,6 +223,7 @@ if jumpKeyBuffered && jumpCount < jumpMax && (!downKey || _floorIsSolid) {
 	jumpHoldTimer = jumpHoldFrames[jumpCount = 2] // this is going to haunt me later with trying to fix coyote jump, if it is even fixed already
 	// Tell outself we're no longer on the ground
 	setOnGround(false)
+	audio_play_sound(jumpSound, 5, false, sfxVolume)
 }
 
 // Cut off the jump by releasing the jump button
@@ -471,32 +473,36 @@ if place_meeting(x, y, [oWall, oMovePlatform]) {
 			// Right
 			if !place_meeting(x + i, y, oWall) {
 				// x += i
-				x += oSpawnPoint.x
-				y += oSpawnPoint.y
+				audio_play_sound(hurtSound, 5, false, sfxVolume)
+				x += global.checkpointX
+				y += global.checkpointY
 				break
 			}
 		
 			// Left
 			if !place_meeting(x - i, y, oWall) {
 				// x -= i
-				x += oSpawnPoint.x
-				y += oSpawnPoint.y
+				audio_play_sound(hurtSound, 5, false, sfxVolume)
+				x += global.checkpointX
+				y += global.checkpointY
 				break
 			}
 		
 			// Up
 			if !place_meeting(x, y - 1, oWall) {
 				// y -= 1
-				x += oSpawnPoint.x
-				y += oSpawnPoint.y
+				audio_play_sound(hurtSound, 5, false, sfxVolume)
+				x += global.checkpointX
+				y += global.checkpointY
 				break
 			}
 		
 			// Down
 			if !place_meeting(x, y + i, oWall) {
 				// y += 1
-				x += oSpawnPoint.x
-				y += oSpawnPoint.y
+				audio_play_sound(hurtSound, 5, false, sfxVolume)
+				x += global.checkpointX
+				y += global.checkpointY
 				break
 			}
 		
@@ -504,8 +510,9 @@ if place_meeting(x, y, [oWall, oMovePlatform]) {
 			if !place_meeting(x + i, y - i, oWall) {
 				//x += i
 				//y -= i
-				x += oSpawnPoint.x
-				y += oSpawnPoint.y
+				audio_play_sound(hurtSound, 5, false, sfxVolume)
+				x += global.checkpointX
+				y += global.checkpointY
 				break
 			}
 		
@@ -513,8 +520,9 @@ if place_meeting(x, y, [oWall, oMovePlatform]) {
 			if !place_meeting(x - i, y - i, oWall) {
 				//x -= 1
 				//y -= 1
-				x += oSpawnPoint.x
-				y += oSpawnPoint.y
+				audio_play_sound(hurtSound, 5, false, sfxVolume)
+				x += global.checkpointX
+				y += global.checkpointY
 				break
 			}
 		
@@ -522,8 +530,9 @@ if place_meeting(x, y, [oWall, oMovePlatform]) {
 			if !place_meeting(x + i, y + i, oWall) {
 				//x += i
 				//y += i
-				x += oSpawnPoint.x
-				y += oSpawnPoint.y
+				audio_play_sound(hurtSound, 5, false, sfxVolume)
+				x += global.checkpointX
+				y += global.checkpointY
 				break
 			}
 		
@@ -531,12 +540,17 @@ if place_meeting(x, y, [oWall, oMovePlatform]) {
 			if !place_meeting(x - i, y + i, oWall) {
 				//x -= 1
 				//y += 1
-				x += oSpawnPoint.x
-				y += oSpawnPoint.y
+				audio_play_sound(hurtSound, 5, false, sfxVolume)
+				x += global.checkpointX
+				y += global.checkpointY
 				break
 			}
 		}
-	
+}
+
+if (place_meeting(x, y, oSpikes)) {
+	x += global.checkpointX
+	y += global.checkpointY
 }
 
 /// Sprite and Particle Control

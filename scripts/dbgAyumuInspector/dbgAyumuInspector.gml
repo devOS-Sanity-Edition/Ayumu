@@ -7,6 +7,15 @@ function dbgAyumuInspector() {
 	dbg_text($"Build Date: {GM_build_type}")
 	dbg_text($"GM Runtime Version: {GM_runtime_version}")
 	dbg_text($"Game Version: {GM_version}-{getBuildDate()}")
+	
+	dbg_section("World")
+	dbg_text_input(ref_create(global, "checkpointX"))
+	dbg_text_input(ref_create(global, "checkpointY"))
+	
+	dbg_section("Volume", true)
+	dbg_slider(ref_create(global, "masterVolume"), 0.0, 1.0, "Master")
+	dbg_slider(ref_create(global, "musicVolume"), 0.0, 1.0, "Music")
+	dbg_slider(ref_create(global, "sfxVolume"), 0.0, 1.0, "SFX")
 
 	dbg_section("Camera", true)
 	dbg_text_separator("Read only values [please do not edit / can't edit]")

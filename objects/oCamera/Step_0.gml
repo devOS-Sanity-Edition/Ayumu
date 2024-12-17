@@ -35,3 +35,4 @@ finalCamY += (_camY - finalCamY) * camTrailSpeed
 //camera_set_view_pos(view_camera[0], finalCamX, finalCamY)
 camera_set_view_pos(view_camera[0], finalCamX, finalCamY)
 
+

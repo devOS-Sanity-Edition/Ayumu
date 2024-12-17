@@ -1,2 +1,2 @@
-x = oSpawnPoint.x
-y = oSpawnPoint.y
+// x = global.checkpointX
+// y = global.checkpointY

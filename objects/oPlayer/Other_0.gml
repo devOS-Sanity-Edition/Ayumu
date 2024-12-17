@@ -1,5 +1,6 @@
 room_restart()
 
-x = oSpawnPoint.x
-y = oSpawnPoint.y
+x = global.checkpointX
+y = global.checkpointY
 speed = 0
+audio_play_sound(hurtSound, 5, false, sfxVolume)

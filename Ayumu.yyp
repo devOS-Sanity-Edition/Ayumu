@@ -95,6 +95,7 @@
     {"id":{"name":"rmTest","path":"rooms/rmTest/rmTest.yy",},},
     {"id":{"name":"rmTest3","path":"rooms/rmTest3/rmTest3.yy",},},
     {"id":{"name":"rmTestOld","path":"rooms/rmTestOld/rmTestOld.yy",},},
+    {"id":{"name":"collision","path":"scripts/collision/collision.yy",},},
     {"id":{"name":"colorSwap","path":"scripts/colorSwap/colorSwap.yy",},},
     {"id":{"name":"consoleCommands","path":"scripts/consoleCommands/consoleCommands.yy",},},
     {"id":{"name":"dbgAyumuInspector","path":"scripts/dbgAyumuInspector/dbgAyumuInspector.yy",},},

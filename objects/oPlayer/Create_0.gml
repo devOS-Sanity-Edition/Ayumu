@@ -1,42 +1,11 @@
 function setOnGround(_val = true) {
+	onGround = _val
 	if _val == true {
-		onGround = true
 		coyoteHangTimer = coyoteHangFrames
 	} else {
-		onGround = false
 		floorPlatform = noone
 		coyoteHangTimer = 0
 	}
-}
-
-function checkForSemiSolidPlatform(_x, _y) {
-	// Create a return variable
-	var _rtrn = noone
-	
-	// Must not be moving upwards, and then check for normal collision
-	if ySpeed >= 0 && place_meeting(_x, _y, oSemiSolidWall) {
-		// Create a DS List [Data Structure List] to store all colliding instances of oSemiSolidWall
-		var _list = ds_list_create()
-		var _listSize = instance_place_list(_x, _y, oSemiSolidWall, _list, false)
-		
-		// Loop through the colliding instances and only return one of its top is below the player
-		for (var i = 0; i < _listSize; i++) {
-			var _listInst = _list[| i]
-			if _listInst != forgetSemiSolid && floor(bbox_bottom) <= ceil(_listInst.bbox_top - _listInst.ySpeed) {
-				// Return the ID of a semi-solid platform
-				_rtrn = _listInst
-				
-				// Exit the loop early
-				i = _listSize
-			}
-		}
-		
-		// Destroy DS List so you don't end up with a fucking memory leak
-		ds_list_destroy(_list)
-	}
-	
-	// Return out var
-	return _rtrn
 }
 
 depth = layer_get_depth("Player")
@@ -125,7 +94,11 @@ roofBonkingFix = true
 wallAreYouDoing = [oWall, oInvisWall]
 type = collisionType.box
 
+// Setup player collision
+collider = new PlayerCollider(self)
+
 // Shader Color Swap
 dualColorSwapSetup()
 
 instance_create_layer(x, y, "Light", oPlayerLight)
+
